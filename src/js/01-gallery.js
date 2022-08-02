@@ -20,6 +20,7 @@ const createGallery = (galleryItems) => {
 
 gallery.insertAdjacentHTML('beforeend', createGallery(galleryItems));
 
+
 const onGalleryItemClick = (event) => {
   event.preventDefault();
   if (event.target.nodeName !== `IMG`) {
@@ -28,12 +29,10 @@ const onGalleryItemClick = (event) => {
   instance = basicLightbox.create(`
     <img src="${event.target.dataset.source}" width="800" height="600">
 `, {
-  onShow: (instance) => {window.addEventListener('keydown', onEscKeyPress)},
-  onClose: (instance) =>{window.removeEventListener('keydown', onEscKeyPress)}
-})
-  instance.show()
-};
-
+    onShow: (instance) => { window.addEventListener('keydown', onEscKeyPress) },
+    onClose: (instance) => { window.removeEventListener('keydown', onEscKeyPress) }
+  })
+}
 gallery.addEventListener(`click`, onGalleryItemClick);
 
 function onModalClose(){
@@ -46,9 +45,6 @@ function onEscKeyPress(event) {
     
   }
 }
-
-
-
 
 
 
